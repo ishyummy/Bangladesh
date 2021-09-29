@@ -1,0 +1,132 @@
+
+Here is the attachment of the Course journey.
+
+On Fri, Apr 16, 2021 at 6:27 PM antt robotics <anttrobotics@gmail.com> wrote:
+Dear sir, 
+I am resending the email again please have a look. 
+
+-------
+
+As per our last meeting, here are our final flow and UX guidelines. Please flow minimalistic design and basic design process of UI, also maintain the scroll & buttons where needed.
+Please let me know if you have any questions.
+
+UX Flow
+
+UX flow Super Admin:  https://www.figma.com/proto/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=1035%3A693&scaling=contain&page-id=1035%3A30
+
+ UX Flow Student: https://www.figma.com/proto/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=1126%3A1792&scaling=contain&page-id=1126%3A277
+
+UX Flow Teacher (as others School): https://www.figma.com/proto/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=1161%3A610&scaling=scale-down&page-id=1161%3A2
+
+UX Flow Teacher (as ANTT School) : https://www.figma.com/proto/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=1187%3A549&scaling=contain&page-id=1103%3A1
+
+UX Flow School: https://www.figma.com/proto/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=1057%3A1633&scaling=scale-down&page-id=1057%3A0
+
+Full UX Design:
+https://www.figma.com/file/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=1126%3A277
+
+
+
+
+Regards,
+
+Uday
+
+Director and Founder 
+
+ANTT Robotics 
+
+
+On Wed, Apr 14, 2021 at 5:49 PM antt robotics <anttrobotics@gmail.com> wrote:
+Dear Sir, 
+As per our last meeting, here are our final flow and UX guidelines. Please flow minimalistic design and basic design process of UI, also maintain the scroll & buttons where needed. 
+Please let me know if you have any questions. 
+
+UX Flow
+UX flow Super Admin:  https://www.figma.com/proto/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=1035%3A693&scaling=contain&page-id=1035%3A30
+
+ 
+
+ UX Flow Student: https://www.figma.com/proto/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=1126%3A1792&scaling=contain&page-id=1126%3A277
+
+ 
+
+UX Flow Teacher (as others School): https://www.figma.com/proto/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=1161%3A610&scaling=scale-down&page-id=1161%3A2
+
+ 
+
+UX Flow Teacher (as ANTT School) : https://www.figma.com/proto/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=1187%3A549&scaling=contain&page-id=1103%3A1
+
+ 
+
+UX Flow School: https://www.figma.com/proto/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=1057%3A1633&scaling=scale-down&page-id=1057%3A0
+
+ 
+
+ 
+
+Full UX Design:
+
+https://www.figma.com/file/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=1126%3A277
+
+
+
+
+
+
+
+Regards,
+
+Uday
+
+Director and Founder 
+
+ANTT Robotics 
+
+
+On Mon, Apr 12, 2021 at 10:19 AM antt robotics <anttrobotics@gmail.com> wrote:
+Dear Sir, 
+Good morning! 
+
+Here our UX flow (figma) is attached with this mail. 
+Super Admin (ANTT Robotics) : https://www.figma.com/file/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=998%3A0 
+Prototype flow (Super Admin): Prototype Flow
+School: https://www.figma.com/file/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=984%3A2958 
+Prototype Flow (School): Prototype Flow 
+Teacher: https://www.figma.com/file/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=984%3A2957 
+Prototype Flow (Teacher): Prototype Flow 
+student: https://www.figma.com/file/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech-Management-UX?node-id=984%3A2956  
+Prototype Flow (Student): Prototype Flow 
+
+Regards,
+Uday 
+Founder & Director 
+ANTT Robotics 
+
+On Sun, Apr 11, 2021 at 6:15 PM antt robotics <anttrobotics@gmail.com> wrote:
+Dear Sir, 
+As per your instruction and review, we did change and updated the UX of the ANTT Robotics Management level. Here I have attached 04 (four) different pdf of 04 users. You may also need the Division, District, and Area names for the address dropdown menu, so I attached another pdf (Division-District-Upazila.pdf) for your reference.
+
+I will also send you the UX flow using Figma by today. 
+
+Thank you so much for your kind advice, hope we will build the business addressable solution under your guidance. 
+
+Regards,
+Uday
+Founder & Director 
+ANTT Robotics
+ Division-District-Upazila.pdf
+ School UX - ANTT Robotics.pdf
+ Student UX - ANTT Robotics.pdf
+ Super Admin - ANTT Robotics.pdf
+ Teacher UX - ANTT Robotics.pdf
+
+On Sun, Apr 4, 2021 at 10:26 PM antt robotics <anttrobotics@gmail.com> wrote:
+Dear Mr. Park, 
+As per our morning meeting here we are attaching the management UX flow. I would love to meet with you before the developer meeting. Hope we will meet tomorrow morning at the office. 
+
+Please find the individual attachment for individual users. 
+Figma link: https://www.figma.com/file/Fql3jjIAqu8e0ZgkbXKKdx/School-of-Tech---Management-UX?node-id=0%3A1  
+
+Thank you. 
+Uday 

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=1600">
+<title>Admin</title>
+<meta name="description" content="Admin">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Admin">
+<meta property="og:description" content="Admin">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.min.css">
+<link rel="stylesheet" href="{% static 'css/default.css' %}" />
+<script type="text/javascript" src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.min.js"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</head>
+<body class="body">
+<div id="wrap" class="">
+       <!-- skipNav -->
+       <div class="skipnavi">
+              <a href="#header">header</a>
+              <a href="#container">container</a>
+              <a href="#footer">footer</a>
+       </div>
+       <!-- header -->
+       <header class="header_admin" id="header">
+              <div class="top_header">
+                     <!-- 무슨기능을 하는지 모름 -->
+                     <a href="javscript: void(0)" class="btn_m">menu button</a>
+                     <!-- //무슨기능을 하는지 모름 -->
+                     <div class="profile_wrap">
+                            <div class="img">
+                                   {% if user.image %}
+                                          <img src = "{{ user.image.url }}"><br>
+                                   {% endif %}
+                            </div>
+                     </div>
+                     <strong>{{ user.user_name }}</strong>
+              </div>
+              <nav>
+                    <ul class="gnb admin_gnb">
+                        <li>
+                            <a href="{% url 'teacher:dash' %}">Dashboard</a>
+                        </li>
+                        <li class="on">
+                            <a href="{% url 'teacher:my_course' %}">Course</a>
+                            <ul class="depth2">
+                                <li class="on"><a href="{% url 'teacher:my_course' %}">Course List</a></li>
+                                <li><a href="{% url 'teacher:course_select' %}">Upload</a></li>
+                            </ul>
+                        </li>
+                            <li>
+                                   <a href="{% url 'teacher:enroll_select' %}">Student</a>
+                            </li>
+                        <li>
+                            <a href="{% url 'teacher:my_class' %}">Class Room</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'teacher:my_quiz' %}">Quiz</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'teacher:setting_profile' %}">Settings</a>
+                        </li>
+                    </ul>
+              </nav>
+       </header>
+       <!-- //header -->
+       <!-- main -->
+       <main class="container" id="container">
+           <section class="page_admin">
+               <div class="top_wrap">
+                   <a href="{% url 'account:logout' %}" class="btn_logout">Log out</a>
+               </div>
+               <h2 class="tit">Upload</h2>
+               <div class="con upload_con">
+                   <div class="tx_r bm30">
+                       <a href="{% url 'teacher:add_lecture' course.id %}" class="btn_add2">ADD Lecture & Quiz</a>
+                       <a href="{% url 'teacher:add_final_quiz' course.id %}" class="btn_add2">ADD Final Quiz</a>
+                   </div>
+                   {% if not lecture_list and not final_quiz_list%}
+                   There is no lecture or quiz uploaded yet<br><br>
+                   {% else %}
+                   {% if lecture_list %}
+                   {% for lecture in lecture_list %}
+                   <ul class="inner_box">
+                       <li>
+                           <div class="top_box">
+                               <p><a href="{% url 'teacher:lecture_modify' lecture.id %}">{{ lecture.title }}</a></p>
+                           </div>
+                       </li>
+                       <li class="quiz_box">
+                           <div class="top_box bottom_none">
+                               <p><a href="{% url 'teacher:quiz_modify' lecture.quiz.id %}">{{ lecture.quiz.title }}</a></p>
+                           </div>
+                       </li>
+                   </ul>
+                   {% endfor %}
+                   {% endif %}
+                   {% if final_quiz_list %}
+                   {% for final_quiz in final_quiz_list %}
+                   <ul class="inner_box">
+                       <li class="final_quiz_box">
+                           <div class="top_box bottom_none">
+                               <p><a href="{% url 'teacher:final_quiz_modify' final_quiz.id %}">{{ final_quiz.title }}</a></p>
+                           </div>
+                       </li>
+                   </ul>
+                   {% endfor %}
+                   {% endif %}
+                   {% endif %}
+                   <a href="{% url 'teacher:my_course'%}" class="btn_type1">Done</a>
+               </div>
+              </section>
+       </main>
+       <!-- main -->
+</div>
+</body>
+</html>

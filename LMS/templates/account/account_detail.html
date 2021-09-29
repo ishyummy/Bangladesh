@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ user.pk }} : {{ user.email }}</h1><br>
+<h3>is info set : {{ user.is_info_set }}</h3>
+<a href="{% url 'account:update' %}" class="btn btn-primary">정보 수정</a>
+<a href="/" class="btn btn-primary">뒤로가기</a>
+{% endblock %}

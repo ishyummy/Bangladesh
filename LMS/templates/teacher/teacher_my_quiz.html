@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=1600">
+<title>Teacher</title>
+<meta name="description" content="Admin">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Admin">
+<meta property="og:description" content="Admin">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.min.css">
+<link rel="stylesheet" href="{% static 'css/default.css' %}" />
+<script type="text/javascript" src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.min.js"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</head>
+<body class="body">
+<div id="wrap" class="">
+       <!-- skipNav -->
+       <div class="skipnavi">
+              <a href="#header">header</a>
+              <a href="#container">container</a>
+              <a href="#footer">footer</a>
+       </div>
+       <!-- header -->
+       <header class="header_admin" id="header">
+              <div class="top_header">
+                     <!-- 무슨기능을 하는지 모름 -->
+                     <a href="javscript: void(0)" class="btn_m">menu button</a>
+                     <!-- //무슨기능을 하는지 모름 -->
+                     <div class="profile_wrap">
+                            <div class="img">
+                                   {% if user.image %}
+                                          <img src = "{{ user.image.url }}"><br>
+                                   {% endif %}
+                            </div>
+                     </div>
+                     <strong>{{ user.user_name }}</strong>
+              </div>
+              <nav>
+                    <ul class="gnb admin_gnb">
+                        <li>
+                            <a href="{% url 'teacher:dash' %}">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'teacher:my_course' %}">Course</a>
+                        </li>
+                            <li>
+                                   <a href="{% url 'teacher:enroll_select' %}">Student</a>
+                            </li>
+                        <li>
+                            <a href="{% url 'teacher:my_class' %}">Class Room</a>
+                        </li>
+                        <li class="on">
+                            <a href="{% url 'teacher:my_quiz' %}">Quiz</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'teacher:setting_profile' %}">Settings</a>
+                        </li>
+                    </ul>
+              </nav>
+       </header>
+       <!-- //header -->
+       <!-- main -->
+       <main class="container" id="container">
+              <section class="page_admin">
+                     <div class="top_wrap">
+                            <a href="{% url 'account:logout' %}" class="btn_logout">Log out</a>
+                     </div>
+                     <h2 class="tit">My Quiz List</h2>
+                     <div class="con admin_con6">
+                            <div class="scroll_box">
+                                   <div class="tbl_wrap1">
+                                          <h4 class="tbl_tit2">Quiz list</h4>
+                                          <table>
+                                                 <colgroup>
+                                                     <col style="width: 15%;">
+                                                     <col style="width: 30%;">
+                                                     <col style="width: 30%;">
+                                                     <col style="width: auto;">
+                                                 </colgroup>
+                                                 <thead>
+                                                        <tr>
+                                                            <th>No.</th>
+                                                            <th>Quiz Title</th>
+                                                            <th>Course Title</th>
+                                                            <th>Author</th>
+                                                        </tr>
+                                                 </thead>
+                                                 <tbody>
+                                                 {% for lecture_list in total_lecture_list %}
+                                                 {% for lecture in lecture_list %}
+                                                 <tr>
+                                                     <td>{{ forloop.counter }}</td>
+                                                     <td>{{ lecture.quiz.title }}</td>
+                                                     <td>{{ lecture.course.title }}</td>
+                                                     <td>{{ lecture.course.author.user_name }}</td>
+                                                 </tr>
+                                                 {% endfor %}
+                                                 {% endfor %}
+                                                 </tbody>
+                                          </table><br><br>
+                                       <h4 class="tbl_tit2">Final Quiz list</h4>
+                                       <table>
+                                           <colgroup>
+                                               <col style="width: 15%;">
+                                               <col style="width: 30%;">
+                                               <col style="width: 30%;">
+                                               <col style="width: auto;">
+                                           </colgroup>
+                                           <thead>
+                                           <tr>
+                                               <th>No.</th>
+                                               <th>Quiz Title</th>
+                                               <th>Course Title</th>
+                                               <th>Author</th>
+                                           </tr>
+                                           </thead>
+                                           <tbody>
+                                           {% for final_quiz_list in total_final_quiz_list %}
+                                           {% for final_quiz in final_quiz_list %}
+                                           <tr>
+                                               <td>{{ forloop.counter }}</td>
+                                               <td>{{ final_quiz.title }}</td>
+                                               <td>{{ final_quiz.course.title }}</td>
+                                               <td>{{ final_quiz.course.author.user_name }}</td>
+                                           </tr>
+                                           {% endfor %}
+                                           {% endfor %}
+                                           </tbody>
+                                       </table>
+                                   </div>
+                            </div>
+                     </div>
+              </section>
+       </main>
+       <!-- main -->
+</div>
+</body>
+</html>

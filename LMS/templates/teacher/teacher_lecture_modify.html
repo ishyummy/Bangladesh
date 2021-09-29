@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=1600">
+<title>Admin</title>
+<meta name="description" content="Admin">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Admin">
+<meta property="og:description" content="Admin">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.min.css">
+<link rel="stylesheet" href="{% static 'css/default.css' %}" />
+<script type="text/javascript" src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.min.js"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</head>
+<body class="body">
+<div id="wrap" class="">
+       <!-- skipNav -->
+       <div class="skipnavi">
+              <a href="#header">header</a>
+              <a href="#container">container</a>
+              <a href="#footer">footer</a>
+       </div>
+       <!-- header -->
+       <header class="header_admin" id="header">
+              <div class="top_header">
+                     <!-- 무슨기능을 하는지 모름 -->
+                     <a href="javscript: void(0)" class="btn_m">menu button</a>
+                     <!-- //무슨기능을 하는지 모름 -->
+                     <div class="profile_wrap">
+                            <div class="img">
+                                   {% if user.image %}
+                                          <img src = "{{ user.image.url }}"><br>
+                                   {% endif %}
+                            </div>
+                     </div>
+                     <strong>{{ user.user_name }}</strong>
+              </div>
+              <nav>
+                    <ul class="gnb admin_gnb">
+                        <li>
+                            <a href="{% url 'teacher:dash' %}">Dashboard</a>
+                        </li>
+                        <li class="on">
+                            <a href="{% url 'teacher:my_course' %}">Course</a>
+                            <ul class="depth2">
+                                <li class="on"><a href="{% url 'teacher:my_course' %}">Course List</a></li>
+                                <li><a href="{% url 'teacher:course_select' %}">Upload</a></li>
+                            </ul>
+                        </li>
+                            <li>
+                                   <a href="{% url 'teacher:enroll_select' %}">Student</a>
+                            </li>
+                        <li>
+                            <a href="{% url 'teacher:my_class' %}">Class Room</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'teacher:my_quiz' %}">Quiz</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'teacher:setting_profile' %}">Settings</a>
+                        </li>
+                    </ul>
+              </nav>
+       </header>
+    <!-- //header -->
+    <!-- main -->
+    <main class="container" id="container">
+        <section class="page_admin">
+            <div class="top_wrap">
+                <a href="{% url 'account:logout' %}" class="btn_logout">Log out</a>
+            </div>
+            <h2 class="tit">Upload Lecture</h2>
+            <div class="con upload_con">
+                <ul class="inner_box">
+                    <li>
+                        <div class="bottom_box">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <fieldset>
+                                    <legend>Upload LECTURE form</legend>
+                                    <div class="form_con1">
+                                        <div class="box">
+                                            <h5>Title of the lecture*</h5>
+                                            <span>
+                                                <div class="input_box">
+                                                    <input type="text" title="Title of the lecture" placeholder="Title of the lecture" name="title" value="{{ lecture.title }}">
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="box">
+                                            <h5>Embed video link</h5>
+                                            <span>
+                                                <div class="input_box">
+                                                    <input type="text" title="Embed video link" placeholder="Embed video link" name="video_link" value="{{ lecture.video_link }}">
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="box">
+                                            <h5>Source code/Example code upload</h5>
+                                            <span>
+                                                <textarea title="Source code/Example code upload" placeholder="Source code/Example code upload" name="code">{{ lecture.code }}</textarea>
+                                            </span>
+                                        </div>
+                                        <div class="box">
+                                            <h5>Upload PDF/PPT</h5>
+                                            <span>
+                                                <input type="file" class="up_btn" name="file" value="Upload PDF/PPT">
+                                            </span>
+                                        </div>
+                                        <div class="btn_box tm50">
+                                            <input type="submit" class="btn_type1" value="Next" style='cursor:pointer;'>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <!-- main -->
+</div>
+</body>
+</html>

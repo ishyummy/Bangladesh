@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=1600">
+<title>Admin</title>
+<meta name="description" content="Admin">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Admin">
+<meta property="og:description" content="Admin">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.min.css">
+<link rel="stylesheet" href="{% static 'css/default.css' %}" />
+<script type="text/javascript" src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.min.js"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</head>
+<body class="body">
+<div id="wrap" class="">
+       <!-- skipNav -->
+       <div class="skipnavi">
+              <a href="#header">header</a>
+              <a href="#container">container</a>
+              <a href="#footer">footer</a>
+       </div>
+       <!-- header -->
+       <header class="header_admin" id="header">
+              <div class="top_header">
+                     <!-- 무슨기능을 하는지 모름 -->
+                     <a href="javascript: void(0)" class="btn_m">menu button</a>
+                     <!-- //무슨기능을 하는지 모름 -->
+                     <div class="profile_wrap">
+                            <div class="img">
+                                   {% if user.image %}
+                                          <img src = "{{ user.image.url }}"><br>
+                                   {% endif %}
+                            </div>
+                     </div>
+                     <strong>{{ user.user_name }}</strong>
+              </div>
+              <nav>
+                     <ul class="gnb">
+                            <li>
+                                   <a href="{% url 'student:dash' %}">Dashboard</a>
+                            </li>
+                            <li>
+                                   <a href="{% url 'student:class_select' %}">Class Room</a>
+                            </li>
+                            <li>
+                                   <a href="{% url 'student:my_quiz' %}">Quiz</a>
+                            </li>
+                            <li class="on">
+                                   <a href="{% url 'student:setting_profile' %}">Settings</a>
+                                   <ul class="depth2">
+                                          <li><a href="{% url 'student:setting_profile' %}">Profile</a></li>
+                                          <li class="on"><a href="{% url 'student:setting_photo' %}">Photo</a></li>
+                                          <li><a href="{% url 'student:setting_account' %}">Account</a></li>
+                                   </ul>
+                            </li>
+                     </ul>
+              </nav>
+       </header>
+       <!-- //header -->
+       <!-- main -->
+       <main class="container" id="container">
+              <section class="page_admin">
+                     <div class="top_wrap">
+                            <a href="{% url 'account:logout' %}" class="btn_logout">Log out</a>
+                     </div>
+                     <h2 class="tit">Teacher Logo</h2>
+                     <div class="con admin_con1">
+                            <form method="POST" enctype="multipart/form-data">
+                                   {% csrf_token %}
+                                   <h3>Image</h3><br><br>
+                                   {% if user.image %}
+                                          <img src = "{{ user.image.url }}"><br>
+                                   {% endif %}
+                                   <h3>Add / Change Image:</h3><br>
+                                   <input type="file" name="image">
+                                   <div class="btn_wrap">
+                                          <input type="submit" class="btn_type1" value="SAVE" style='cursor:pointer;'>
+                                   </div>
+                            </form>
+                     </div>
+
+              </section>
+       </main>
+       <!-- main -->
+</div>
+</body>
+</html>

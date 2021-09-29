@@ -1,0 +1,19 @@
+<< How to run server >>
+
+at root/LMS
+$ python3 manage.py runserver 158.247.227.118:8000
+
+You can't make super-admin account through web page.
+You should have at least one super-admin account before running server.
+If this is your first server-run or when you want to add another super-admin account, input the command below.
+
+at root/LMS
+$ python3 manage.py createsuperuser
+
+Email is the ID.
+
+<< How to modify DB manually >>
+
+If you want to add or delete datas manually, you should enter admin page with super-admin account.
+
+address: 158.247.227.118:8000/admin

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=1600">
+<title>Student</title>
+<meta name="description" content="Admin">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Admin">
+<meta property="og:description" content="Admin">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.min.css">
+<link rel="stylesheet" href="{% static 'css/default.css' %}">
+<script type="text/javascript" src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.min.js"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</head>
+<body class="body">
+<div id="wrap" class="">
+       <!-- skipNav -->
+       <div class="skipnavi">
+              <a href="#header">header</a>
+              <a href="#container">container</a>
+              <a href="#footer">footer</a>
+       </div>
+       <!-- header -->
+       <header class="header_admin" id="header">
+              <div class="top_header">
+                     <!-- 무슨기능을 하는지 모름 -->
+                     <a href="javscript: void(0)" class="btn_m">menu button</a>
+                     <!-- //무슨기능을 하는지 모름 -->
+                     <div class="profile_wrap">
+                            <div class="img">
+                                   {% if user.image %}
+                                          <img src = "{{ user.image.url }}"><br>
+                                   {% endif %}
+                            </div>
+                     </div>
+                     <strong>{{ user.user_name }}</strong>
+              </div>
+              <nav>
+                    <ul class="gnb admin_gnb">
+                            <li>
+                                   <a href="{% url 'student:dash' %}">Dashboard</a>
+                            </li>
+                            <li class="on">
+                                <a href="{% url 'student:class_select' %}">Class Room</a>
+                                <ul class="depth2">
+                                    <li><a href="{% url 'student:class_select' %}">Class List</a></li>
+                                    <li class="on"><a href="{% url 'student:my_class' %}">My Class</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                   <a href="{% url 'student:my_quiz' %}">Quiz</a>
+                            </li>
+                            <li>
+                                   <a href="{% url 'student:setting_profile' %}">Settings</a>
+                            </li>
+                    </ul>
+              </nav>
+       </header>
+       <!-- //header -->
+       <!-- main -->
+       <main class="container" id="container">
+              <section class="page_admin">
+                     <div class="top_wrap">
+                            <a href="{% url 'account:logout' %}" class="btn_logout">Log out</a>
+                     </div>
+                     <h2 class="tit">Take Class</h2>
+                     <div class="con upload_con">
+                   {% if not lecture_list and not final_quiz_list%}
+                   There is no lecture or quiz uploaded yet
+                   {% else %}
+                   {% if lecture_list %}
+                   {% for lecture in lecture_list %}
+                   <ul class="inner_box">
+                       <li>
+                           <div class="top_box">
+                               <p><a href="{% url 'student:take_lecture' lecture.id enroll.id %}">class {{ forloop.counter }}</a></p>
+                               {% for lecture_pass in lecture_pass_list %}
+                                    {% if lecture_pass.lecture == lecture %}
+                                        {% if lecture_pass.is_passed %}
+                                        <font color="blue">Pass</font>
+                                        {% else %}
+                                        <font color="red">Fail</font>
+                                        {% endif %}
+                                    {% endif %}
+                               {% endfor %}
+                           </div>
+                       </li>
+                   </ul>
+                   {% endfor %}
+                   {% endif %}
+                   {% if final_quiz_list %}
+                   {% for final_quiz in final_quiz_list %}
+                   <ul class="inner_box">
+                       <li class="final_quiz_box">
+                           <div class="top_box bottom_none">
+                               <p><a href="{% url 'student:take_final_quiz' final_quiz.id enroll.id %}">final quiz {{ forloop.counter }}</a></p>
+                               {% for final_quiz_pass in final_quiz_pass_list %}
+                                    {% if final_quiz_pass.final_quiz == final_quiz %}
+                                        {% if final_quiz_pass.is_passed %}
+                                        <font color="blue">Pass</font>
+                                        {% else %}
+                                        <font color="red">Fail</font>
+                                        {% endif %}
+                                    {% endif %}
+                               {% endfor %}
+                           </div>
+                       </li>
+                   </ul>
+                   {% endfor %}
+                   {% endif %}
+                   {% endif %}
+                         <button type="button" class="btn_type1" onclick="location.href='{% url 'student:my_class'%}'">Done</button>
+               </div>
+              </section>
+       </main>
+       <!-- main -->
+</div>
+</body>
+</html>

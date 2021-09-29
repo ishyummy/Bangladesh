@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=1600">
+<title>Teacher</title>
+<meta name="description" content="Admin">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Admin">
+<meta property="og:description" content="Admin">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.min.css">
+<link rel="stylesheet" href="{% static 'css/default.css' %}" />
+<script type="text/javascript" src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.min.js"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</head>
+<body class="body">
+<div id="wrap" class="">
+       <!-- skipNav -->
+       <div class="skipnavi">
+              <a href="#header">header</a>
+              <a href="#container">container</a>
+              <a href="#footer">footer</a>
+       </div>
+       <!-- header -->
+       <header class="header_admin" id="header">
+              <div class="top_header">
+                     <!-- 무슨기능을 하는지 모름 -->
+                     <a href="javscript: void(0)" class="btn_m">menu button</a>
+                     <!-- //무슨기능을 하는지 모름 -->
+                     <div class="profile_wrap">
+                            <div class="img">
+                                   {% if user.image %}
+                                          <img src = "{{ user.image.url }}"><br>
+                                   {% endif %}
+                            </div>
+                     </div>
+                     <strong>{{ user.user_name }}</strong>
+              </div>
+              <nav>
+                     <ul class="gnb admin_gnb">
+                            <li>
+                                <a href="{% url 'teacher:dash' %}">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'teacher:my_course' %}">Course</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'teacher:enroll_select' %}">Student</a>
+                            </li>
+                            <li class="on">
+                                <a href="{% url 'teacher:my_class' %}">Class Room</a>
+                                <ul class="depth2">
+                                   <li><a href="{% url 'teacher:my_class' %}">Class Room List</a></li>
+                                   <li class="on"><a href="{% url 'teacher:create_class' %}">Create Class Room</a></li>
+                               </ul>
+                            </li>
+                            <li>
+                                <a href="{% url 'teacher:my_quiz' %}">Quiz</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'teacher:setting_profile' %}">Settings</a>
+                            </li>
+                     </ul>
+              </nav>
+       </header>
+       <!-- //header -->
+       <!-- main -->
+       <main class="container" id="container">
+           <section class="page_admin">
+               <div class="top_wrap">
+                   <a href="{% url 'account:logout' %}" class="btn_logout">Log out</a>
+               </div>
+               <h2 class="tit">Create Class Room</h2>
+               <form method="POST">
+                           {% csrf_token %}
+                   <div class="con admin_con7 class_con">
+                       <div class="scroll_box">
+                           <p class="txt1 bold txt_black tx_c f_18">Add a new class</p>
+                           <div class="lp65 rp65 tm35">
+                               <fieldset>
+                                   <legend>Add a new class form</legend>
+                                   <div class="form_con1">
+                                       <div class="clear input_wrap2">
+                                           <div class="box fl">
+                                               <h5>CLASS NAME*</h5>
+                                               <span>
+                                                   <div class="input_box">
+                                                       <input type="text" title="CLASS NAME" placeholder="CLASS NAME" name="class_name">
+                                                   </div>
+                                               </span>
+                                           </div>
+                                           <div class="box fr">
+                                               <h5>BATCH NAME*</h5>
+                                               <span>
+                                                   <div class="input_box">
+                                                       <input type="text" title="BATCH NAME" placeholder="BATCH NAME" name="batch_name">
+                                                   </div>
+                                               </span>
+                                           </div>
+                                       </div>
+                                       <div class="box">
+                                           <h5>Select Course*</h5>
+                                           <span>
+                                               <div class="input_wrap">
+                                                   <div class="select_type1">
+                                                       <select name="select_course">
+                                                           {% if course_list %}
+                                                           {% for course in course_list %}
+                                                           <option value="{{ course.id }}">{{ course.title }}</option>
+                                                           {% endfor %}
+                                                           {% else %}
+                                                           <option>None</option>
+                                                           {% endif %}
+                                                       </select>
+                                                   </div>
+                                               </div>
+                                           </span>
+                                       </div>
+                                       <div class="clear input_wrap2">
+                                           <div class="box fl">
+                                               <h5>COURSE START DATE</h5>
+                                               <span>
+                                                   <div class="input_box date_box">
+                                                       <input type="text" id="datepicker1" title="COURSE START DATE" class="datepicker-here" data-language='en' placeholder="DD - MM  - YYYY" name="start_date">
+                                                       <button type="button" class="date_btn"></button>
+                                                   </div>
+                                               </span>
+                                           </div>
+                                           <div class="box fr">
+                                               <h5>COURSE END DATE</h5>
+                                               <span>
+                                                   <div class="input_box date_box">
+                                                       <input type="text" id="datepicker2" title="COURSE END DATE" class="datepicker-here" data-language='en' placeholder="DD - MM  - YYYY" name="end_date">
+                                                       <button type="button" class="date_btn"></button>
+                                                   </div>
+                                               </span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </fieldset>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="btn_box tm82 tx_c">
+                       <button type="button" class="btn_type5 rm20">Cancel</button>
+                       <input type="submit" class="btn_type1" value="Create class" style='cursor:pointer;'>
+                   </div>
+               </form>
+            </section>
+       </main>
+       <!-- main -->
+</div>
+</body>
+</html>
